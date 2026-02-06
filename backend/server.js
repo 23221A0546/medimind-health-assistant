@@ -5,7 +5,8 @@ const path = require("path");
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
+
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
@@ -218,7 +219,7 @@ I've analyzed your message. While I don't see a specific match in my database, h
 /* =========================
    SERVER START
    ========================= */
-const PORT = 5085;
+const PORT = process.env.PORT || 5086;
 app.listen(PORT, () => {
-  console.log(`✅ MediMind Hackathon Ready at http://localhost:${PORT}`);
+  console.log("✅ MediMind Hackathon Ready");
 });
